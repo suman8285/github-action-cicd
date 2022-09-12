@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: ['develop', 'master', 'workflow']
+    branches: ['workflow']
   pull_request:
     branches: ['develop', 'master']
     types: [opened, assigned, reopened]
