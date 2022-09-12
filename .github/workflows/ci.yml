@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ "develop","master","workflow" ]
+    branches: ['develop', 'master', 'workflow']
   pull_request:
-    branches: [ "develop","master" ]
+    branches: ['develop', 'master']
     types: [opened, assigned, reopened]
 
 jobs:
@@ -15,9 +15,9 @@ jobs:
       - name: Use NodeJS
         uses: actions/setup-node@v1
         with:
-          node-version: "12.x"
+          node-version: '12.x'
       - run: npm ci
       - run: npm run format:check
       - run: npm test --coverage
         env:
-          CI: true 
+          CI: true
