@@ -2,10 +2,9 @@ name: CI
 
 on:
   push:
-    branches: ['workflow', 'develop']
+    branches: ['master', 'workflow', 'develop']
   pull_request:
-    branches: ['develop', 'master']
-    types: [opened, assigned, reopened]
+    branches: ['master', 'develop', 'master']
 
 jobs:
   build:
@@ -34,14 +33,21 @@ jobs:
           name: code-coverage
           path: coverage
       - name: Build Project
-        #if: github.event_name == 'push'
+        if: github.event_name == 'push'
         run: npm run build
       - name: upload Build folder
-        #if: github.event_name == 'push'
+        if: github.event_name == 'push'
         uses: actions/upload-artifact@v1
         with:
           name: build
           path: build
+
+      - name: zip assets
+        #if: github.event_name == 'push' && github.ref=='refs/heads/workflow'
+        run: |
+          zip -r build.zip ./build
+          zip -r coverage.zip ./coverage
+
       - name: Create a Release
         #if: github.event_name == 'push' && github.ref=='refs/heads/workflow'
         run: npx semantic-release
