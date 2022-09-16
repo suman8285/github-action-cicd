@@ -70,7 +70,7 @@ jobs:
         run: |
           curl \
           -X POST \
-          --url https://api.github.com/repos/suman8285/github-action-cicd/issues \
+          --url https://api.github.com/repos/${{ github.repository }}/issues \
           -H "Accept: application/vnd.github+json" \ 
           -H "Authorization: Bearer  ${{ secrets.CUSTOM_GITHUB_TOKEN }}" \          
           -d '{"title":"Automated issue for the commit : ${{ github.sha }}",
