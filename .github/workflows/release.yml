@@ -1,13 +1,13 @@
 name: Notify the messanger on Release
 
-on: 
-  release: 
+on:
+  release:
     types: [published]
 
-jobs: 
-  slack-message: 
+jobs:
+  slack-message:
     runs-on: ubuntu-latest
-    steps: 
-    - name: slack messanger
-      run: |
-        curl -X POST -H 'Content-type: application/json' --data '{"text":"New Release ${{ github.event.release.tag_name }}"}' ${{ secrets.SLACK_WEB_HOOK }}
+    steps:
+      - name: slack messanger
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"New Release ${{ github.event.release.tag_name }}"}' ${{ secrets.SLACK_WEB_HOOK }}
