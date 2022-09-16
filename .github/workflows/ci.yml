@@ -70,9 +70,9 @@ jobs:
         run: |
           curl \
           -X POST \
+          --url https://api.github.com/repos/suman8285/github-action-cicd/issues \
           -H "Accept: application/vnd.github+json" \ 
-          -H "Authorization: Bearer  ${{ secrets.CUSTOM_GITHUB_TOKEN }}" \
-          https://api.github.com/repos/suman8285/github-action-cicd/issues \
+          -H "Authorization: Bearer  ${{ secrets.CUSTOM_GITHUB_TOKEN }}" \          
           -d '{"title":"Automated issue for the commit : ${{ github.sha }}",
            "body":"This is automatically created by Github Action workflow **${{ github.workflow}}**.\n\n
             The commit hash was: _${{ github.sha }}_.",
